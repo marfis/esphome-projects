@@ -1,0 +1,43 @@
+esphome:
+  name: test
+  platform: ESP32
+  board: nodemcu-32s
+
+wifi:
+  ssid: "ssid"
+  password: "password"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "fallback-ap"
+    password: "test123!!!"
+
+  manual_ip:
+    static_ip: 192.168.1.100
+    gateway: 192.168.1.1
+    subnet: 255.255.255.0
+
+mqtt:
+  broker: 192.168.1.49
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+
+switch:
+  - platform: gpio
+    name: "test switch"
+    pin: 5
+
+sensor:
+  - platform: mqtt_subscribe
+    name: "Data from topic"
+    id: mysensor
+    topic: test
